@@ -10,10 +10,11 @@ if (!rootElement) {
   document.body.insertBefore(rootElement, document.body.childNodes[0])
 }
 
+/* global __webpack_public_path__ */
 const render = Component => {
   ReactDOM.render(
     <AppContainer>
-      <Router>
+      <Router basename={ __webpack_public_path__ }>
         <Component />
       </Router>
     </AppContainer>,

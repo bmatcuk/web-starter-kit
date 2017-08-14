@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet'
 import { StaticRouter as Router } from 'react-router'
 import App from './App'
 
+/* global __webpack_public_path__ */
 export default (scripts, styles) => {
   scripts = scripts.map((script) => (
     `<script type="text/javascript" src="${script}"></script>`
@@ -16,7 +17,7 @@ export default (scripts, styles) => {
     var context = {}
 
     const html = ReactDOMServer.renderToString(
-      <Router location={ req.url } context={ context }>
+      <Router basename={ __webpack_public_path__ } location={ req.url } context={ context }>
         <App />
       </Router>
     )
