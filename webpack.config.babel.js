@@ -215,6 +215,10 @@ module.exports = () => {
         name: 'vendor',
       }),
 
+      new CommonsChunkPlugin({
+        name: 'runtime',
+      }),
+
       ...pluginsConfig,
 
       ...DEV && [
