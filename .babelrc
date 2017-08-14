@@ -1,0 +1,24 @@
+{
+  "presets": [
+    ["env", {
+      "debug": true,
+      "targets": {
+        "browsers": "last 2 versions"
+      },
+      "modules": false
+    }],
+    "react",
+    "stage-3"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "transform-react-jsx-self",
+        "transform-react-jsx-source"
+      ]
+    }
+  },
+  "plugins": [
+    "react-hot-loader/babel"
+  ]
+}

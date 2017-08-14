@@ -1,0 +1,11 @@
+.button:any-link {
+  background-color: var(--secondaryColor);
+  color: var(--background);
+  padding: 0.5em 1em;
+  border-radius: 5px;
+
+  &:--hover {
+    background-color: var(--secondaryLight);
+    color: var(--background);
+  }
+}

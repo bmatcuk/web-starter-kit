@@ -1,0 +1,6 @@
+.libraries {
+  width: 100%;
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  flex-flow: column;
+}

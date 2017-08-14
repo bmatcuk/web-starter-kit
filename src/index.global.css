@@ -1,0 +1,35 @@
+@import "~normalize.css";
+
+@-ms-viewport {
+  width: device-width;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  background: var(--background);
+  color: var(--text);
+}
+
+a:any-link {
+  color: var(--secondaryColor);
+  text-decoration: none;
+
+  &:--hover {
+    color: var(--secondaryDark);
+  }
+}
+
+section.main {
+  display: flex;
+  box-sizing: border-box;
+
+  /* 1rem is the height of the footer */
+  min-height: calc(100vh - 1rem);
+
+  /*
+   * 1.1rem = height of h1 in header
+   * 1.15 = line-height
+   * 0.67 = top/bottom margin of h1
+   */
+  padding-top: calc(1.1rem * (1.15 + (2 * 0.67)));
+}
