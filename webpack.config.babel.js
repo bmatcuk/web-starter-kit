@@ -196,7 +196,7 @@ module.exports = () => {
     output: {
       path: path.resolve(__dirname, 'build', 'public'),
       filename: DEV ? '[name].[hash].js' : '[name].[chunkhash].js',
-      publicPath: '/',
+      publicPath: '/web-starter-kit',
       pathinfo: DEV
     },
 
