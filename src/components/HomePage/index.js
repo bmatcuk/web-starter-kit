@@ -21,16 +21,16 @@ const HomePage = () => (
     <section id="features" className={ cn('main', styles.features) }>
       <div className={ styles.featuresContainer }>
         <div>
-          <h3>Newest Libraries</h3>
-          <p>Newest versions of webpack, babel, react, and more</p>
-        </div>
-        <div>
           <h3>Isomorphic</h3>
           <p>Render on the server and in the client; pre-render static content</p>
         </div>
         <div>
           <h3>Hot Reload</h3>
           <p>Make development easier with hot reload</p>
+        </div>
+        <div>
+          <h3>Newest Libraries</h3>
+          <p>Newest versions of webpack, babel, react, and more</p>
         </div>
       </div>
     </section>

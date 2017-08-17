@@ -1,3 +1,0 @@
-[submodule "build/public"]
-	path = build/public
-	url = git@github.com:bmatcuk/web-starter-kit.git
