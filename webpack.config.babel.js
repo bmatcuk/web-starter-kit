@@ -18,6 +18,7 @@ const project = require('./package.json')
 
 const SRC = path.resolve(__dirname, 'src')
 const DEV = process.env.NODE_ENV == 'development'
+const PUBLIC_PATH = '/web-starter-kit/'
 
 // For the web, we either need the style-loader in development
 // mode, or we need the ExtractTextPlugin for production.
@@ -196,7 +197,7 @@ module.exports = () => {
     output: {
       path: path.resolve(__dirname, 'build', 'public'),
       filename: DEV ? '[name].[hash].js' : '[name].[chunkhash].js',
-      publicPath: '/web-starter-kit',
+      publicPath: PUBLIC_PATH,
       pathinfo: DEV
     },
 
