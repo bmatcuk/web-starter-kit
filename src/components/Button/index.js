@@ -5,7 +5,7 @@ import cn from 'classnames'
 import styles from './styles.css'
 
 const Button = ({ className, ...props }) => (
-  <Link className={ cn(styles.button, className) } {...props} />
+  <a className={ cn(styles.button, className) } {...props} />
 )
 
 Button.propTypes = {
@@ -13,3 +13,11 @@ Button.propTypes = {
 }
 
 export default Button
+
+export const LinkButton = ({ className, ...props }) => (
+  <Link className={ cn(styles.button, className) } {...props} />
+)
+
+LinkButton.propTypes = {
+  className: PropTypes.string
+}

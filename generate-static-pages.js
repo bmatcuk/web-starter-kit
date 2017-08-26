@@ -1,5 +1,6 @@
 const app = require('./lib/ExpressApp');
 const cheerio = require('cheerio');
+const config = require('./config.json');
 const debug = require('util').debuglog('static');
 const { eachSeries } = require('async');
 const { get } = require('http');
@@ -9,7 +10,7 @@ const { tmpdir } = require('os');
 const ospath = require('path');
 const path = ospath.posix;
 
-const PATHS = ['/'];
+const PATHS = config.staticPaths.map((p) => p.endsWith('/') ? p : p + '/');
 
 const isAbsoluteUri = (function() {
   const rgx = new RegExp('^(?:[a-z]+:)?//', 'i');
@@ -23,6 +24,8 @@ function outputPath(base, uri) {
     uri = uri + '.html';
   if (ospath.sep != path.sep)
     uri = uri.replace(path.sep, ospath.sep);
+  if (uri.startsWith(config.publicPath))
+    uri = uri.substr(config.publicPath.length);
   return path.resolve(base, '.' + uri);
 }
 
@@ -63,10 +66,10 @@ function retrievePath(uri, done) {
       debug('Getting new paths to crawl');
       $('a[href]').each(function() {
         let href = cleanupUri($(this).attr('href'));
-        if (!isAbsoluteUri(href)) {
+        if (href.length > 0 && !isAbsoluteUri(href)) {
           if (!path.isAbsolute(href))
             href = path.resolve(uri, '..', href);
-          debug(`Adding new path: ${href}`);
+          debug(`Adding new path: ${$(this).attr('href')} -> ${href}`);
           paths.push(href);
         }
       });

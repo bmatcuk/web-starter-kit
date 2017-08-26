@@ -16,7 +16,7 @@ const HomePage = () => (
       <h1 className={ styles.header }>{ project.name }</h1>
       <hr className={ styles.rule } />
       <h2 className={ styles.subtitle }>{ project.description }</h2>
-      <Button to="#" onClick={ scrollToFeatures }>Read More</Button>
+      <Button href="#" onClick={ scrollToFeatures }>Read More</Button>
     </header>
     <section id="features" className={ cn('main', styles.features) }>
       <div className={ styles.featuresContainer }>

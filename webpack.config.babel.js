@@ -15,10 +15,11 @@ const NoEmitOnErrorsPlugin = webpack.NoEmitOnErrorsPlugin
 const RequiredAssetsPlugin = require('./lib/RequiredAssetsPlugin')
 
 const project = require('./package.json')
+const config = require('./config.json')
 
 const SRC = path.resolve(__dirname, 'src')
 const DEV = process.env.NODE_ENV == 'development'
-const PUBLIC_PATH = '/web-starter-kit/'
+const PUBLIC_PATH = config.publicPath
 
 // For the web, we either need the style-loader in development
 // mode, or we need the ExtractTextPlugin for production.
@@ -256,6 +257,7 @@ module.exports = () => {
     output: {
       path: path.resolve(__dirname, 'build'),
       filename: '[name].js',
+      publicPath: PUBLIC_PATH,
       pathinfo: false,
       library: 'serverRenderer',
       libraryExport: 'default',
