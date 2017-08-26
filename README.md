@@ -43,17 +43,23 @@ directory contains some utility code for building and running an express
 server.
 
 ## Configuration
-The main option of interest is probably the `PUBLIC_PATH' option in the
-`webpack.config.babel.js`. If your site will be hosted under a subdirectory,
-you'll want to make sure this value matches your subdirectory. If it will not
-be hosted in a subdirectory, you should set it to `/`. You'll find the
-`PUBLIC_PATH` option near the top of the file.
+All of the configuration options can be found in the `config.json` file in the
+root of the project.
+
+* **publicPath**: If your site will be hosted in a subdirectory (such as
+  `http://example.com/subdirectory`) then you'll want to set the publicPath to
+  the subdirectory (`/subdirectory` in this example). If your site will be
+  hosted at the root (like `http://example.com/`) then you should set publicPath
+  to `/`.
+* **staticPaths**: Static paths to crawl (see [#building-static-files](Building
+  Static Files) below. If you are going to host under a subdirectory (see
+  publicPath), your staticPaths will include this subdirectory.
 
 ## Building Static Files
 By default, when you run `npm run build`, the build will attempt to pre-render
 any files that can be pre-rendered. It does this by starting up an express
-server and visiting every URL mentioned in the `PATHS` variable in the
-`generate-static-pages.js` script. For each file rendered this way, the script
-parses the HTML to find new relative paths to crawl. Any path ending in a `/`
-will be created as a subdirectory with an `index.html` file. Any path that does
-not contain a file extension will automatically append a `.html`.
+server and visiting every URL mentioned in the `staticPaths` variable in
+`config.json`. For each file rendered this way, the script parses the HTML to
+find new relative paths to crawl. Any path ending in a `/` will be created as a
+subdirectory with an `index.html` file. Any path that does not contain a file
+extension will automatically append a `.html`.
