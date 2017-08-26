@@ -52,7 +52,7 @@ root of the project.
   hosted at the root (like `http://example.com/`) then you should set publicPath
   to `/`.
 * **staticPaths**: Static paths to crawl (see
-  [Building Static Files](#building-static-files) below. If you are going to
+  [Building Static Files](#building-static-files) below). If you are going to
   host under a subdirectory (see publicPath), your staticPaths will include this
   subdirectory.
 
