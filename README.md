@@ -51,9 +51,10 @@ root of the project.
   the subdirectory (`/subdirectory` in this example). If your site will be
   hosted at the root (like `http://example.com/`) then you should set publicPath
   to `/`.
-* **staticPaths**: Static paths to crawl (see [#building-static-files](Building
-  Static Files) below. If you are going to host under a subdirectory (see
-  publicPath), your staticPaths will include this subdirectory.
+* **staticPaths**: Static paths to crawl (see
+  [Building Static Files](#building-static-files) below. If you are going to
+  host under a subdirectory (see publicPath), your staticPaths will include this
+  subdirectory.
 
 ## Building Static Files
 By default, when you run `npm run build`, the build will attempt to pre-render
