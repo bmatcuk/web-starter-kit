@@ -12,9 +12,10 @@ if (!rootElement) {
 
 /* global __webpack_public_path__ */
 const render = Component => {
+  const basename = __webpack_public_path__.replace(/\/$/, '')
   ReactDOM.render(
     <AppContainer>
-      <Router basename={ __webpack_public_path__ }>
+      <Router basename={ basename }>
         <Component />
       </Router>
     </AppContainer>,

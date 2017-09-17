@@ -1,4 +1,4 @@
 {
-  "publicPath": "/web-starter-kit",
+  "publicPath": "/web-starter-kit/",
   "staticPaths": ["/web-starter-kit"]
 }

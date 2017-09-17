@@ -10,7 +10,8 @@ const { tmpdir } = require('os');
 const ospath = require('path');
 const path = ospath.posix;
 
-const PATHS = config.staticPaths.map((p) => p.endsWith('/') ? p : p + '/');
+const PUBLIC_PATH = config.publicPath.replace(/\/$/, '');
+const PATHS = config.staticPaths;
 
 const isAbsoluteUri = (function() {
   const rgx = new RegExp('^(?:[a-z]+:)?//', 'i');
@@ -24,8 +25,8 @@ function outputPath(base, uri) {
     uri = uri + '.html';
   if (ospath.sep != path.sep)
     uri = uri.replace(path.sep, ospath.sep);
-  if (uri.startsWith(config.publicPath))
-    uri = uri.substr(config.publicPath.length);
+  if (uri.startsWith(PUBLIC_PATH))
+    uri = uri.substr(PUBLIC_PATH.length);
   return path.resolve(base, '.' + uri);
 }
 
@@ -47,6 +48,20 @@ function retrievePath(uri, done) {
     res.on('data', chunks.push.bind(chunks));
     res.on('end', () => {
       if (res.statusCode != 200) {
+        if (res.statusCode == 301) {
+          let href = cleanupUri(res.headers['location']);
+          if (href.length > 0 && !isAbsoluteUri(href)) {
+            if (!path.isAbsolute(href))
+              href = path.resolve(uri, '..', href);
+            debug(`Redirect to: ${res.headers['location']} -> ${href}`);
+            eachSeries([href], retrievePath, done);
+            return;
+          }
+
+          // eslint-disable-next-line no-console
+          console.log('Skipping redirect to', res.headers['location']);
+        }
+
         debug(`Got status ${res.statusCode}; skipping`);
         return;
       }

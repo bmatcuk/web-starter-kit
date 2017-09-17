@@ -9,8 +9,9 @@ export default (scripts, styles) => {
   return (req, res) => {
     var context = {}
 
+    const basename = __webpack_public_path__.replace(/\/$/, '')
     const html = ReactDOMServer.renderToString(
-      <Router basename={ __webpack_public_path__ } location={ req.url } context={ context }>
+      <Router basename={ basename } location={ req.url } context={ context }>
         <App />
       </Router>
     )
